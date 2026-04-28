@@ -1,5 +1,6 @@
 import { Button, Card, Chip, Separator } from '@heroui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 export function FluentEmojiFlatPinkHeart(props) {
@@ -37,7 +38,9 @@ const PhotoCard = ({photo}) => {
                     <StreamlineColorDownloadBox1/> {downloads}
                 </div>    
             </div>
-            <Button variant="primary" className="w-full">View</Button>
+            <Link href={`/photos/${id}`}>
+                <Button variant="primary" className="w-full">View</Button>
+            </Link>
         </Card>
 
     );
