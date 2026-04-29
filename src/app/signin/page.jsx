@@ -10,6 +10,9 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { Icon } from "@iconify/react";
+import { authClient } from "@/lib/auth-client";
+
 
 export default function SignInPage() {
   const onSubmit = async (e) => {
@@ -23,9 +26,14 @@ export default function SignInPage() {
     password: password, // required
     rememberMe: true,
     callbackURL: "/",
-});
-  
+    });
   };
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+    provider: "google",
+  });
+  }
 
   return (
     <div className="">
@@ -87,6 +95,15 @@ export default function SignInPage() {
           </Button>
         </div>
       </Form>
+      <div className="w-96 mx-auto">
+        <p className="text-center text-sm text-gray-500 my-4">or</p>
+        <Button onClick={handleGoogleSignIn} variant="tertiary" className="w-full">
+            <Icon icon="devicon:google" />
+            Sign in with Google
+        </Button>
+      </div>
+        
+
     </Card>
     </div>
   );
